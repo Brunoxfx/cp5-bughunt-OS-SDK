@@ -8,6 +8,12 @@ import java.time.LocalDateTime;
 @Entity
 public class Banho extends Atendimento {
 
+    private static final double PRECO_PEQUENO = 60.0;
+    private static final double PRECO_MEDIO = 80.0;
+    private static final double PRECO_GRANDE = 100.0;
+    private static final int PONTOS_FIDELIDADE = 20;
+    private static final int DURACAO_MINUTOS = 45;
+
     public static final String TIPO = "BANHO";
 
     public Banho() {
@@ -25,20 +31,20 @@ public class Banho extends Atendimento {
     @Override
     public double calcularPreco() {
         if ("PEQUENO".equals(getPetPorte())) {
-            return 60.0;
+            return PRECO_PEQUENO;
         } else if ("MEDIO".equals(getPetPorte())) {
-            return 80.0;
+            return PRECO_MEDIO;
         }
-        return 100.0;
+        return PRECO_GRANDE;
     }
 
     @Override
     public int calcularPontosFidelidade() {
-        return 20;
+        return PONTOS_FIDELIDADE;
     }
 
     @Override
     public int getDuracaoMinutos() {
-        return 45;
+        return DURACAO_MINUTOS;
     }
 }

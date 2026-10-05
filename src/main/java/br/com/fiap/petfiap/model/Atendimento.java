@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 @Table(name = "atendimentos")
 public abstract class Atendimento {
 
+    private static final int DURACAO_PADRAO_MINUTOS = 30;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -49,7 +51,7 @@ public abstract class Atendimento {
 
     // duracao media em minutos; subclasses mais demoradas sobrescrevem
     public int getDuracaoMinutos() {
-        return 30;
+        return DURACAO_PADRAO_MINUTOS;
     }
 
     // Conclui o atendimento (so pode em AGENDADO)
