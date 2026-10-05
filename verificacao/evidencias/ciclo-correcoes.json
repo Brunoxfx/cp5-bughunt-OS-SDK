@@ -1,0 +1,217 @@
+[
+  {
+    "item": "bug01",
+    "commit": "fix: bug01 - atribui nome do pet ao campo do builder",
+    "tests": 20,
+    "failures": 8,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 1
+  },
+  {
+    "item": "bug02",
+    "commit": "fix: bug02 - valida nome e porte antes de construir atendimento",
+    "tests": 20,
+    "failures": 6,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 1
+  },
+  {
+    "item": "bug03",
+    "commit": "fix: bug03 - cria tosa no ramo correto da factory",
+    "tests": 20,
+    "failures": 5,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 1
+  },
+  {
+    "item": "bug04",
+    "commit": "fix: bug04 - inicializa os dados herdados da consulta veterinaria",
+    "tests": 20,
+    "failures": 4,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 1
+  },
+  {
+    "item": "bug05",
+    "commit": "fix: bug05 - preserva singleton e sequencia global de protocolos",
+    "tests": 20,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 1
+  },
+  {
+    "item": "bug06",
+    "commit": "fix: bug06 - compara valores do pet e horario para recusar conflitos",
+    "tests": 20,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 1
+  },
+  {
+    "item": "bug07",
+    "commit": "fix: bug07 - propaga excecao quando atendimento nao existe",
+    "tests": 20,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "teste01",
+    "commit": "test: teste01 - cobre preco do banho nos tres portes",
+    "tests": 21,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 1
+  },
+  {
+    "item": "bug08",
+    "commit": "fix: bug08 - corrige precos do banho pequeno e grande",
+    "tests": 21,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "teste02",
+    "commit": "test: teste02 - cobre duracao da tosa por chamada polimorfica",
+    "tests": 22,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 1
+  },
+  {
+    "item": "bug09",
+    "commit": "fix: bug09 - sobrescreve duracao da tosa com a assinatura correta",
+    "tests": 22,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "teste03",
+    "commit": "test: teste03 - cobre recusa de data passada sem consultar repository",
+    "tests": 23,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 1
+  },
+  {
+    "item": "bug10",
+    "commit": "fix: bug10 - recusa data passada antes de acessar o repository",
+    "tests": 23,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "teste04",
+    "commit": "test: teste04 - cobre cancelamento recusado nos estados finais sem salvar",
+    "tests": 24,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 1
+  },
+  {
+    "item": "bug11",
+    "commit": "fix: bug11 - permite cancelar somente atendimento agendado",
+    "tests": 24,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "teste05",
+    "commit": "test: teste05 - cobre preco fixo da consulta independentemente do porte",
+    "tests": 25,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "teste06",
+    "commit": "test: teste06 - cobre cancelamento valido e persistencia do novo status",
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "bug12",
+    "commit": "fix: bug12 - gera identificador do atendimento ao persistir",
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  {
+    "item": "clean01",
+    "commit": "refactor: clean01 - nomeia parametros da factory pela sua finalidade",
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "clean02",
+    "commit": "refactor: clean02 - explicita nomes dos atendimentos na agenda",
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "clean03",
+    "commit": "refactor: clean03 - nomeia constantes de preco pontos e duracao",
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "clean04",
+    "commit": "refactor: clean04 - separa impressao de recibo das regras de negocio",
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "clean05",
+    "commit": "refactor: clean05 - remove desconto morto e plano comentado",
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  {
+    "item": "clean06",
+    "commit": "refactor: clean06 - remove comentarios incorretos e redundantes",
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  }
+]

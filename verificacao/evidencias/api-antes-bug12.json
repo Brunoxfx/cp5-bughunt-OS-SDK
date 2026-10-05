@@ -1,0 +1,9 @@
+{
+  "banco": "H2 em memoria",
+  "configuracao_original_alterada": false,
+  "verificacoes": 1,
+  "falhas": 0,
+  "cenarios": [
+    "Cadastro sem geracao de id falha com HTTP 500"
+  ]
+}
