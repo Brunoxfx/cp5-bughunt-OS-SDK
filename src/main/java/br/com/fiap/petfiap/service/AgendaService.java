@@ -18,19 +18,19 @@ public class AgendaService {
     private AtendimentoRepository repository;
 
     // Agenda um novo atendimento: recusa horario ja ocupado pelo mesmo pet.
-    public Atendimento agendar(Atendimento novo) {
-        if (novo.getDataHora() == null || novo.getDataHora().isBefore(LocalDateTime.now())) {
+    public Atendimento agendar(Atendimento novoAtendimento) {
+        if (novoAtendimento.getDataHora() == null || novoAtendimento.getDataHora().isBefore(LocalDateTime.now())) {
             throw new IllegalArgumentException("Data e hora devem estar no presente ou futuro");
         }
-        List<Atendimento> doPet = repository.findByPetNome(novo.getPetNome());
-        for (Atendimento a : doPet) {
-            if (a.getPetNome().equals(novo.getPetNome()) && a.getDataHora().equals(novo.getDataHora())
-                    && "AGENDADO".equals(a.getStatus())) {
+        List<Atendimento> atendimentosDoPet = repository.findByPetNome(novoAtendimento.getPetNome());
+        for (Atendimento atendimentoExistente : atendimentosDoPet) {
+            if (atendimentoExistente.getPetNome().equals(novoAtendimento.getPetNome()) && atendimentoExistente.getDataHora().equals(novoAtendimento.getDataHora())
+                    && "AGENDADO".equals(atendimentoExistente.getStatus())) {
                 throw new HorarioOcupadoException(
-                        "Pet " + novo.getPetNome() + " ja possui atendimento agendado nesse horario");
+                        "Pet " + novoAtendimento.getPetNome() + " ja possui atendimento agendado nesse horario");
             }
         }
-        Atendimento salvo = repository.save(novo);
+        Atendimento salvo = repository.save(novoAtendimento);
         System.out.println("Recibo: atendimento " + salvo.getProtocolo()
                 + " agendado para " + salvo.getPetNome() + " (tutor " + salvo.getTutorNome() + ")");
         return salvo;
