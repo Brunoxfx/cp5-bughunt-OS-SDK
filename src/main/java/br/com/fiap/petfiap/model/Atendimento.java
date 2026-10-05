@@ -40,13 +40,10 @@ public abstract class Atendimento {
         this.status = "AGENDADO";
     }
 
-    // tipo do atendimento (BANHO, TOSA, CONSULTA)
     public abstract String getTipo();
 
-    // preco do atendimento segundo o porte do pet
     public abstract double calcularPreco();
 
-    // pontos de fidelidade acumulados pelo tutor
     public abstract int calcularPontosFidelidade();
 
     // duracao media em minutos; subclasses mais demoradas sobrescrevem
@@ -70,7 +67,6 @@ public abstract class Atendimento {
         status = "CANCELADO";
     }
 
-    // Getters e Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

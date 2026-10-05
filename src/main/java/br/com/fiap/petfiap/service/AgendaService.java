@@ -54,7 +54,6 @@ public class AgendaService {
         return repository.save(atendimento);
     }
 
-    // Lista os atendimentos de um pet.
     public List<Atendimento> buscarPorPet(String petNome) {
         return repository.findByPetNome(petNome);
     }
