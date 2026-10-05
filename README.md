@@ -21,7 +21,7 @@ API de agendamentos de banho, tosa e consulta veterinária corrigida a partir do
 | **Total de testes novos escritos** | **6 / 6** |
 | **Suíte final** | **26 testes, 0 falhas, 0 erros, 0 ignorados** |
 
-Repositório: [Brunoxfx/CP5-POO](https://github.com/Brunoxfx/CP5-POO).
+Repositório: [Brunoxfx/cp5-bughunt-OS-SDK](https://github.com/Brunoxfx/cp5-bughunt-OS-SDK).
 
 Para executar os testes, use JDK 17 ou superior e `mvn verify`. A API também foi validada com Oracle FIAP, incluindo gravação, leitura e persistência após reinício. As credenciais locais não foram versionadas.
 
