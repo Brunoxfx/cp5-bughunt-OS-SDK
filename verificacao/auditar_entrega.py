@@ -120,6 +120,14 @@ def main():
              'suite_final': summary, 'api_h2': {'verificacoes': api['verificacoes'], 'falhas': api['falhas']},
              'repositorio': repository, 'publicacao_github': 'publicado' if published else 'pendente',
              'entrega_teams': 'pendente'}
+    oracle_path = root / 'verificacao/evidencias/oracle-final.json'
+    if oracle_path.exists():
+        oracle = json.loads(oracle_path.read_text(encoding='utf-8'))
+        assert oracle['falhas'] == 0 and oracle['conexao_autenticada']
+        assert oracle['persistencia']['reinicio_api'] and oracle['persistencia']['registros_confirmados'] == 13
+        audit['api_oracle'] = {'verificacoes': oracle['verificacoes'], 'falhas': oracle['falhas'],
+                               'conexao_autenticada': True, 'persistencia_apos_reinicio': True,
+                               'registros_artificiais_confirmados': 13}
     save('auditoria-entrega.json', audit)
     print('Auditoria concluida: original preservado, 12 fixes, 6 refactors, 6 testes novos e suite 26/26.')
 

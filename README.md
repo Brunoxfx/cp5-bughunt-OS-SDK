@@ -159,7 +159,19 @@ O script passou em 76 verificações: cadastro e leitura dos três tipos nos tr�
 
 Durante a validação nesta pasta sincronizada pelo OneDrive, `mvn clean` não conseguiu excluir um diretório gerado em `target`. `mvn verify` recompilou o projeto, executou os 26 testes e empacotou a aplicação com sucesso.
 
-Para usar Oracle, configure os valores apenas no ambiente local. O arquivo versionado mantém exatamente `SEU_RM` e `SUA_SENHA`, como recebido. Esta entrega foi validada com Maven e H2; execução pelo Eclipse e conexão Oracle não foram realizadas nesta validação.
+### Conferir a API no Oracle FIAP
+
+A conexão autenticada com Oracle 19 e a API passaram em **92 verificações**, incluindo os mesmos cenários HTTP, a geração de ID no schema e a persistência após reiniciar a aplicação. Foram criados **13 atendimentos artificiais**, identificados pelo prefixo registrado em `verificacao/evidencias/oracle-final.json`. Todos permaneceram intactos após o reinício; não havia tabela `ATENDIMENTOS` antes da execução.
+
+Com JDK 17 e Python, forneça o caminho de um arquivo local com usuário/RM na primeira linha e senha na segunda:
+
+```powershell
+python verificacao/verificar_api.py --oracle --credenciais "caminho-local/credenciais.txt"
+```
+
+O verificador também aceita `SPRING_DATASOURCE_USERNAME` e `SPRING_DATASOURCE_PASSWORD` no ambiente local. Ele inspeciona a tabela antes de iniciar, recusa uma estrutura existente incompatível e usa apenas dados artificiais com prefixo próprio. Se a tabela não existe, o Hibernate a cria; em tabela existente e no reinício, usa validação do schema. Cada execução deixa seus registros artificiais no Oracle para demonstrar persistência. Não apaga dados anteriores.
+
+As credenciais são passadas pelo ambiente dos processos, sem gravá-las no projeto ou nos argumentos da JVM. O arquivo versionado mantém exatamente `SEU_RM` e `SUA_SENHA`, como recebido. Esta entrega foi validada com Maven, H2 e Oracle; execução pelo Eclipse não foi realizada nesta validação.
 
 ### Arquivos de evidência
 
@@ -170,6 +182,7 @@ Para usar Oracle, configure os valores apenas no ambiente local. O arquivo versi
 | `verificacao/evidencias/suite-final.json` | Contagem final dos testes e resultado do build. |
 | `verificacao/evidencias/api-antes-bug12.json` | Reprodução do cadastro com HTTP 500 antes da geração de ID. |
 | `verificacao/evidencias/api-final.json` | Cenários HTTP e de persistência executados com H2. |
+| `verificacao/evidencias/oracle-final.json` | 92 verificações com Oracle autenticado e 13 registros preservados após reiniciar a API. |
 | `verificacao/evidencias/auditoria-entrega.json` | Comparação com o ZIP original, integridade dos testes, configuração e histórico. |
 
 ### Checklist
@@ -183,6 +196,7 @@ Para usar Oracle, configure os valores apenas no ambiente local. O arquivo versi
 - [x] Dependências e `application.properties` originais preservados.
 - [x] README com integrantes, achados e seis respostas de reflexão.
 - [x] API validada localmente com H2.
+- [x] API validada no Oracle FIAP, com gravação, leitura e persistência após reinício.
 - [ ] Conferência das respostas pelos integrantes do grupo.
 - [x] Projeto e histórico publicados no repositório público [Brunoxfx/CP5-POO](https://github.com/Brunoxfx/CP5-POO).
 - [ ] Enviar o mesmo link no Teams para todos os integrantes.

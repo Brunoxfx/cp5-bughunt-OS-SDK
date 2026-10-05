@@ -37,5 +37,12 @@
   },
   "repositorio": "https://github.com/Brunoxfx/CP5-POO.git",
   "publicacao_github": "publicado",
-  "entrega_teams": "pendente"
+  "entrega_teams": "pendente",
+  "api_oracle": {
+    "verificacoes": 92,
+    "falhas": 0,
+    "conexao_autenticada": true,
+    "persistencia_apos_reinicio": true,
+    "registros_artificiais_confirmados": 13
+  }
 }

@@ -16,7 +16,7 @@ Grupo OS-SDK, turma 2CCPG. Integrantes e RMs estão no README.
 | Configuração sem credenciais reais | Validado: `application.properties` mantém `SEU_RM/SUA_SENHA` e é idêntico ao original. |
 | Nenhuma biblioteca nova | Validado: `pom.xml` idêntico ao original. |
 | README completo | Concluído: identificação, 12 achados, 6 ajustes, 6 testes e 6 reflexões de 7 linhas cada. |
-| API em execução, opcional | Validado com H2: 76 verificações de HTTP, regras e persistência. Oracle e Eclipse não executados nesta validação. |
+| API em execução, opcional | Validado com H2 (76 verificações) e Oracle FIAP (92 verificações), incluindo 13 registros preservados após reiniciar a API. Eclipse não executado nesta validação. |
 | Conferência das reflexões pelos integrantes | Pendente. |
 | Repositório público no GitHub | Publicado em [Brunoxfx/CP5-POO](https://github.com/Brunoxfx/CP5-POO), com o histórico completo. |
 | Link no Teams, igual para todo o grupo | Pendente de envio. |
