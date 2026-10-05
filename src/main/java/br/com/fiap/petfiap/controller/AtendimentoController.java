@@ -1,5 +1,6 @@
 package br.com.fiap.petfiap.controller;
 
+import br.com.fiap.petfiap.apresentacao.ReciboAgendamento;
 import br.com.fiap.petfiap.exception.AtendimentoNaoEncontradoException;
 import br.com.fiap.petfiap.exception.HorarioOcupadoException;
 import br.com.fiap.petfiap.exception.StatusInvalidoException;
@@ -40,7 +41,9 @@ public class AtendimentoController {
                     .comTutor(tutorNome)
                     .comDataHora(dataHora)
                     .construir(protocolo);
-            return ResponseEntity.status(201).body(service.agendar(atendimento));
+            Atendimento atendimentoSalvo = service.agendar(atendimento);
+            ReciboAgendamento.imprimir(atendimentoSalvo);
+            return ResponseEntity.status(201).body(atendimentoSalvo);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().build();
         } catch (HorarioOcupadoException e) {
