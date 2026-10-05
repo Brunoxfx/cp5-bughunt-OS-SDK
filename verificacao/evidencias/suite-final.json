@@ -1,9 +1,0 @@
-{
-  "tests": 26,
-  "failures": 0,
-  "errors": 0,
-  "skipped": 0,
-  "build": "BUILD SUCCESS",
-  "comando": "mvn -B -o verify",
-  "jdk": 17
-}

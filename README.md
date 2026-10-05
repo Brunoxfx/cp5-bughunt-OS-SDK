@@ -21,7 +21,9 @@ API de agendamentos de banho, tosa e consulta veterinária corrigida a partir do
 | **Total de testes novos escritos** | **6 / 6** |
 | **Suíte final** | **26 testes, 0 falhas, 0 erros, 0 ignorados** |
 
-A validação da suíte foi feita pelo Maven com JDK 17. O mesmo projeto pode ser importado no Eclipse como Maven e executado por `Run As → JUnit Test`. Repositório público: [Brunoxfx/CP5-POO](https://github.com/Brunoxfx/CP5-POO). O envio do link no Teams ainda precisa ser realizado.
+Repositório: [Brunoxfx/CP5-POO](https://github.com/Brunoxfx/CP5-POO).
+
+Para executar os testes, use JDK 17 ou superior e `mvn verify`. A API também foi validada com Oracle FIAP, incluindo gravação, leitura e persistência após reinício. As credenciais locais não foram versionadas.
 
 ## Parte 1 — Bugs encontrados
 
@@ -70,7 +72,7 @@ Os seis testes estão em arquivos novos; nenhum arquivo da suíte entregue foi a
 | teste05 | `ConsultaPrecoTest.deveCobrar150ReaisQuandoPorteDaConsultaVariar` | Consulta custa R$ 150 nos três portes. | Verde de cara: cálculo já correto. |
 | teste06 | `AgendaCancelamentoTest.deveSalvarCancelamentoQuandoAtendimentoEstiverAgendado` | Cancelar agendado muda para `CANCELADO` e salva o mesmo objeto. | Verde de cara: esse caminho já correto. |
 
-Cada teste tem um commit `test: testeNN`, separado do commit que corrige a causa. O resultado inicial de cada teste está registrado em `verificacao/evidencias/ciclo-correcoes.json`.
+Cada teste tem um commit `test: testeNN`, separado do commit que corrige a causa.
 
 ## Parte 4 — Perguntas de reflexão
 
@@ -133,72 +135,3 @@ Com prazo curto, eu priorizaria regras com maior impacto e combinações de cami
 Neste projeto, isso inclui não salvar em conflito, impedir mudanças em estados finais e preservar os valores da tabela.<br>
 Uma porcentagem de cobertura não substitui boas asserções: executar um método sem verificar o resultado pode deixar o bug passar.<br>
 O bug12 mostrou outro limite: mocks não validam o mapeamento JPA, então acrescentamos uma verificação da API com H2.
-
-## Parte 5 — Execução, evidências e entrega
-
-### Executar os testes
-
-Requisito: JDK 17 ou superior e Maven. Na primeira execução, o Maven baixa as dependências; depois disso, a suíte não precisa de banco nem rede.
-
-```powershell
-mvn verify
-```
-
-No Eclipse: `File → Import → Maven → Existing Maven Projects`, selecione a pasta com `pom.xml`, configure o JDK 17 e execute a pasta `src/test/java` com `Run As → JUnit Test`.
-
-### Conferir a API sem Oracle
-
-O H2 já pertence ao `pom.xml` original. O verificador usa um banco temporário em memória, uma porta local livre e encerra a JVM criada ao terminar. Não modifica `application.properties`.
-
-```powershell
-mvn verify
-python verificacao/verificar_api.py
-```
-
-O script passou em 76 verificações: cadastro e leitura dos três tipos nos três portes, preços, pontos, duração, protocolos, conflitos, validações, IDs inexistentes e todas as transições de status da tabela. Também verifica horários de atendimentos cancelados e concluídos, outro horário e outro pet.
-
-Durante a validação nesta pasta sincronizada pelo OneDrive, `mvn clean` não conseguiu excluir um diretório gerado em `target`. `mvn verify` recompilou o projeto, executou os 26 testes e empacotou a aplicação com sucesso.
-
-### Conferir a API no Oracle FIAP
-
-A conexão autenticada com Oracle 19 e a API passaram em **92 verificações**, incluindo os mesmos cenários HTTP, a geração de ID no schema e a persistência após reiniciar a aplicação. Foram criados **13 atendimentos artificiais**, identificados pelo prefixo registrado em `verificacao/evidencias/oracle-final.json`. Todos permaneceram intactos após o reinício; não havia tabela `ATENDIMENTOS` antes da execução.
-
-Com JDK 17 e Python, forneça o caminho de um arquivo local com usuário/RM na primeira linha e senha na segunda:
-
-```powershell
-python verificacao/verificar_api.py --oracle --credenciais "caminho-local/credenciais.txt"
-```
-
-O verificador também aceita `SPRING_DATASOURCE_USERNAME` e `SPRING_DATASOURCE_PASSWORD` no ambiente local. Ele inspeciona a tabela antes de iniciar, recusa uma estrutura existente incompatível e usa apenas dados artificiais com prefixo próprio. Se a tabela não existe, o Hibernate a cria; em tabela existente e no reinício, usa validação do schema. Cada execução deixa seus registros artificiais no Oracle para demonstrar persistência. Não apaga dados anteriores.
-
-As credenciais são passadas pelo ambiente dos processos, sem gravá-las no projeto ou nos argumentos da JVM. O arquivo versionado mantém exatamente `SEU_RM` e `SUA_SENHA`, como recebido. Esta entrega foi validada com Maven, H2 e Oracle; execução pelo Eclipse não foi realizada nesta validação.
-
-### Arquivos de evidência
-
-| Arquivo | Conteúdo |
-|---|---|
-| `verificacao/evidencias/suite-inicial.json` | 20 testes e 9 falhas antes das alterações. |
-| `verificacao/evidencias/ciclo-correcoes.json` | Resultados após as correções e ao escrever cada teste. |
-| `verificacao/evidencias/suite-final.json` | Contagem final dos testes e resultado do build. |
-| `verificacao/evidencias/api-antes-bug12.json` | Reprodução do cadastro com HTTP 500 antes da geração de ID. |
-| `verificacao/evidencias/api-final.json` | Cenários HTTP e de persistência executados com H2. |
-| `verificacao/evidencias/oracle-final.json` | 92 verificações com Oracle autenticado e 13 registros preservados após reiniciar a API. |
-| `verificacao/evidencias/auditoria-entrega.json` | Comparação com o ZIP original, integridade dos testes, configuração e histórico. |
-
-### Checklist
-
-- [x] Primeiro commit com os arquivos originais do ZIP.
-- [x] 12 correções, cada uma com commit próprio.
-- [x] 6 ajustes de Clean Code, cada um com commit próprio.
-- [x] 6 testes novos, cada um com commit próprio.
-- [x] 20 testes recebidos preservados e passando.
-- [x] 26 testes finais sem falhas.
-- [x] Dependências e `application.properties` originais preservados.
-- [x] README com integrantes, achados e seis respostas de reflexão.
-- [x] API validada localmente com H2.
-- [x] API validada no Oracle FIAP, com gravação, leitura e persistência após reinício.
-- [ ] Conferência das respostas pelos integrantes do grupo.
-- [x] Projeto e histórico publicados no repositório público [Brunoxfx/CP5-POO](https://github.com/Brunoxfx/CP5-POO).
-- [ ] Enviar o mesmo link no Teams para todos os integrantes.
-
-A publicação no GitHub foi concluída; a entrega acadêmica ainda depende do envio do link no Teams.
