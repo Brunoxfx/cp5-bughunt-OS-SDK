@@ -18,7 +18,7 @@ Grupo OS-SDK, turma 2CCPG. Integrantes e RMs estão no README.
 | README completo | Concluído: identificação, 12 achados, 6 ajustes, 6 testes e 6 reflexões de 7 linhas cada. |
 | API em execução, opcional | Validado com H2: 76 verificações de HTTP, regras e persistência. Oracle e Eclipse não executados nesta validação. |
 | Conferência das reflexões pelos integrantes | Pendente. |
-| Repositório público `cp5-bughunt-OS-SDK` | Pendente de publicação. |
+| Repositório público no GitHub | Publicado em [Brunoxfx/CP5-POO](https://github.com/Brunoxfx/CP5-POO), com o histórico completo. |
 | Link no Teams, igual para todo o grupo | Pendente de envio. |
 
 ## Conteúdo do ZIP
@@ -38,4 +38,4 @@ mvn verify
 
 Ao publicar, use esse repositório restaurado ou o repositório de trabalho original. Criar um repositório novo somente com os arquivos extraídos perderia os commits exigidos pelo PDF.
 
-Depois da publicação pública no GitHub, entregue o endereço do repositório no Teams. O ZIP local não substitui essa etapa.
+Entregue [https://github.com/Brunoxfx/CP5-POO](https://github.com/Brunoxfx/CP5-POO) no Teams, usando o mesmo link para todos os integrantes. O ZIP local não substitui essa etapa.

@@ -105,13 +105,21 @@ def main():
     subprocess.run(['git', 'diff', '--check'], cwd=root, check=True)
     api = json.loads((root / 'verificacao/evidencias/api-final.json').read_text(encoding='utf-8'))
     assert api['falhas'] == 0 and api['verificacoes'] >= 70
+    remote = subprocess.run(['git', 'config', '--get', 'remote.origin.url'], cwd=root, capture_output=True, text=True)
+    repository = remote.stdout.strip()
+    published = False
+    if repository:
+        remote_ref = subprocess.run(['git', 'ls-remote', '--exit-code', 'origin', 'refs/heads/main'],
+                                    cwd=root, capture_output=True, text=True)
+        published = remote_ref.returncode == 0 and bool(remote_ref.stdout.strip())
     audit = {'primeiro_commit': first_hash, 'arquivos_originais_no_primeiro_commit': len(original),
              'primeiro_commit_identico_ao_zip': True, 'arquivos_testes_originais_intactos': 7,
              'testes_originais': 20, 'testes_novos': 6, 'commits_por_categoria': counts,
              'pom_original_intacto': True, 'application_properties_original_intacto': True,
              'credenciais': 'SEU_RM/SUA_SENHA', 'sha256_arquivos_preservados': hashes,
              'suite_final': summary, 'api_h2': {'verificacoes': api['verificacoes'], 'falhas': api['falhas']},
-             'publicacao_github': 'pendente', 'entrega_teams': 'pendente'}
+             'repositorio': repository, 'publicacao_github': 'publicado' if published else 'pendente',
+             'entrega_teams': 'pendente'}
     save('auditoria-entrega.json', audit)
     print('Auditoria concluida: original preservado, 12 fixes, 6 refactors, 6 testes novos e suite 26/26.')
 

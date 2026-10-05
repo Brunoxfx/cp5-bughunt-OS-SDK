@@ -21,7 +21,7 @@ API de agendamentos de banho, tosa e consulta veterinária corrigida a partir do
 | **Total de testes novos escritos** | **6 / 6** |
 | **Suíte final** | **26 testes, 0 falhas, 0 erros, 0 ignorados** |
 
-A validação da suíte foi feita pelo Maven com JDK 17. O mesmo projeto pode ser importado no Eclipse como Maven e executado por `Run As → JUnit Test`. Nome previsto para o repositório público: `cp5-bughunt-OS-SDK`. A publicação no GitHub e o envio do link no Teams ainda precisam ser realizados.
+A validação da suíte foi feita pelo Maven com JDK 17. O mesmo projeto pode ser importado no Eclipse como Maven e executado por `Run As → JUnit Test`. Repositório público: [Brunoxfx/CP5-POO](https://github.com/Brunoxfx/CP5-POO). O envio do link no Teams ainda precisa ser realizado.
 
 ## Parte 1 — Bugs encontrados
 
@@ -184,7 +184,7 @@ Para usar Oracle, configure os valores apenas no ambiente local. O arquivo versi
 - [x] README com integrantes, achados e seis respostas de reflexão.
 - [x] API validada localmente com H2.
 - [ ] Conferência das respostas pelos integrantes do grupo.
-- [ ] Publicar repositório público `cp5-bughunt-OS-SDK` no GitHub.
+- [x] Projeto e histórico publicados no repositório público [Brunoxfx/CP5-POO](https://github.com/Brunoxfx/CP5-POO).
 - [ ] Enviar o mesmo link no Teams para todos os integrantes.
 
-A publicação e a entrega no Teams são etapas externas; a conclusão do build local não comprova essas etapas.
+A publicação no GitHub foi concluída; a entrega acadêmica ainda depende do envio do link no Teams.
